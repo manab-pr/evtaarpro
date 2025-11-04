@@ -1,0 +1,31 @@
+redis:
+  host: "localhost"
+  port: 6379
+  password: ""
+  db: 0
+
+  pool:
+    max_active: 100
+    max_idle: 20
+    idle_timeout: 240s
+    wait: true
+
+  timeouts:
+    dial: 5s
+    read: 3s
+    write: 3s
+
+  # Key prefixes for different data types
+  prefixes:
+    session: "session:"
+    cache: "cache:"
+    meeting_token: "meeting_token:"
+    rate_limit: "rate_limit:"
+    otp: "otp:"
+
+  # TTL settings
+  ttl:
+    session: 604800 # 7 days
+    cache: 3600 # 1 hour
+    meeting_token: 86400 # 24 hours
+    otp: 300 # 5 minutes
