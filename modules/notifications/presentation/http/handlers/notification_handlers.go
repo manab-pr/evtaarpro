@@ -66,7 +66,7 @@ func (h *NotificationHandlers) GetNotification(c *gin.Context) {
 }
 
 func (h *NotificationHandlers) ListMyNotifications(c *gin.Context) {
-	userID, _ := c.Get("userID")
+	userID, _ := c.Get("user_id")
 	notifType := c.Query("type")
 	isReadStr := c.Query("is_read")
 	page, _ := strconv.Atoi(c.DefaultQuery("page", "1"))
@@ -147,7 +147,7 @@ func (h *NotificationHandlers) MarkAsUnread(c *gin.Context) {
 }
 
 func (h *NotificationHandlers) MarkAllAsRead(c *gin.Context) {
-	userID, _ := c.Get("userID")
+	userID, _ := c.Get("user_id")
 
 	if err := h.notificationRepo.MarkAllAsRead(c.Request.Context(), userID.(string)); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to mark all notifications as read"})
@@ -158,7 +158,7 @@ func (h *NotificationHandlers) MarkAllAsRead(c *gin.Context) {
 }
 
 func (h *NotificationHandlers) GetUnreadCount(c *gin.Context) {
-	userID, _ := c.Get("userID")
+	userID, _ := c.Get("user_id")
 
 	count, err := h.notificationRepo.GetUnreadCount(c.Request.Context(), userID.(string))
 	if err != nil {

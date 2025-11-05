@@ -28,7 +28,7 @@ func NewCRMHandlers(
 
 // Customer Handlers
 func (h *CRMHandlers) CreateCustomer(c *gin.Context) {
-	userID, _ := c.Get("userID")
+	userID, _ := c.Get("user_id")
 	var req dto.CreateCustomerRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -61,7 +61,7 @@ func (h *CRMHandlers) CreateCustomer(c *gin.Context) {
 }
 
 func (h *CRMHandlers) GetCustomer(c *gin.Context) {
-	id := c.Param("id")
+	id := c.Param("customer_id")
 	customer, err := h.customerRepo.GetByID(c.Request.Context(), id)
 	if err != nil {
 		c.JSON(http.StatusNotFound, gin.H{"error": "Customer not found"})
@@ -103,7 +103,7 @@ func (h *CRMHandlers) ListCustomers(c *gin.Context) {
 }
 
 func (h *CRMHandlers) UpdateCustomer(c *gin.Context) {
-	id := c.Param("id")
+	id := c.Param("customer_id")
 	var req dto.UpdateCustomerRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})
@@ -143,7 +143,7 @@ func (h *CRMHandlers) UpdateCustomer(c *gin.Context) {
 }
 
 func (h *CRMHandlers) DeleteCustomer(c *gin.Context) {
-	id := c.Param("id")
+	id := c.Param("customer_id")
 	if err := h.customerRepo.Delete(c.Request.Context(), id); err != nil {
 		c.JSON(http.StatusInternalServerError, gin.H{"error": "Failed to delete customer"})
 		return
@@ -154,7 +154,7 @@ func (h *CRMHandlers) DeleteCustomer(c *gin.Context) {
 
 // Interaction Handlers
 func (h *CRMHandlers) CreateInteraction(c *gin.Context) {
-	userID, _ := c.Get("userID")
+	userID, _ := c.Get("user_id")
 	var req dto.CreateInteractionRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

@@ -140,7 +140,7 @@ func (h *PayrollHandlers) UpdateEmployee(c *gin.Context) {
 
 // Payroll Record Handlers
 func (h *PayrollHandlers) CreatePayrollRecord(c *gin.Context) {
-	userID, _ := c.Get("userID")
+	userID, _ := c.Get("user_id")
 	var req dto.CreatePayrollRecordRequest
 	if err := c.ShouldBindJSON(&req); err != nil {
 		c.JSON(http.StatusBadRequest, gin.H{"error": err.Error()})

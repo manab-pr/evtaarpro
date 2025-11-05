@@ -25,13 +25,13 @@ func RegisterRoutes(rg *gin.RouterGroup, cfg *config.Config, pgStore *datastore.
 		// Customer routes
 		crm.POST("/customers", crmHandlers.CreateCustomer)
 		crm.GET("/customers", crmHandlers.ListCustomers)
-		crm.GET("/customers/:id", crmHandlers.GetCustomer)
-		crm.PUT("/customers/:id", crmHandlers.UpdateCustomer)
-		crm.DELETE("/customers/:id", crmHandlers.DeleteCustomer)
+		crm.GET("/customers/:customer_id", crmHandlers.GetCustomer)
+		crm.PUT("/customers/:customer_id", crmHandlers.UpdateCustomer)
+		crm.DELETE("/customers/:customer_id", crmHandlers.DeleteCustomer)
+		crm.GET("/customers/:customer_id/interactions", crmHandlers.ListInteractionsByCustomer)
 
 		// Interaction routes
 		crm.POST("/interactions", crmHandlers.CreateInteraction)
 		crm.GET("/interactions/:id", crmHandlers.GetInteraction)
-		crm.GET("/customers/:customer_id/interactions", crmHandlers.ListInteractionsByCustomer)
 	}
 }

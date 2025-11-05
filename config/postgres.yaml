@@ -1,10 +1,10 @@
 postgres:
-  host: "localhost"
+  host: "${DB_HOST}"
   port: 5432
-  user: "postgres"
-  password: "postgres"
-  dbname: "evtaarpro"
-  sslmode: "disable"
+  user: "${DB_USER}"
+  password: "${DB_PASSWORD}"
+  dbname: "${DB_NAME}"
+  sslmode: "${DB_SSLMODE}"
 
   pool:
     max_open_conns: 25
