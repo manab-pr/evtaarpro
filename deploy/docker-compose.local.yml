@@ -53,6 +53,16 @@ services:
       - REDIS_HOST=redis
       - REDIS_PORT=6379
       - REDIS_PASSWORD=
+      - JWT_SECRET=your-super-secret-jwt-key-change-this-in-production
+      - JITSI_API_URL=https://meet.jit.si
+      - JITSI_APP_ID=your-jitsi-app-id
+      - JITSI_APP_SECRET=your-jitsi-app-secret
+      - JITSI_DOMAIN=meet.jit.si
+      - GOOGLE_CLIENT_ID=your-google-client-id
+      - GOOGLE_CLIENT_SECRET=your-google-client-secret
+      - GOOGLE_REDIRECT_URL=http://localhost:8080/api/v1/auth/google/callback
+      - AWS_REGION=us-east-1
+      - AWS_S3_BUCKET=evtaarpro-recordings
     ports:
       - "8080:8080"
     depends_on:
