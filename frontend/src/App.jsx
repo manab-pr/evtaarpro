@@ -12,6 +12,9 @@ import Users from './pages/Users';
 import Meetings from './pages/Meetings';
 import MeetingCreate from './pages/MeetingCreate';
 import MeetingDetails from './pages/MeetingDetails';
+import Payroll from './pages/Payroll';
+import CRM from './pages/CRM';
+import Notifications from './pages/Notifications';
 
 // Layout
 import Layout from './components/Layout';
@@ -60,6 +63,9 @@ function AppRoutes() {
         <Route path="meetings" element={<Meetings />} />
         <Route path="meetings/new" element={<MeetingCreate />} />
         <Route path="meetings/:id" element={<MeetingDetails />} />
+        <Route path="payroll" element={<Payroll />} />
+        <Route path="crm" element={<CRM />} />
+        <Route path="notifications" element={<Notifications />} />
       </Route>
 
       {/* 404 */}
